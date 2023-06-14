@@ -31,7 +31,7 @@ public class UserLevelController {
   ) {
     List<UserLevel> topResult = userLevelService.getTop20ResultByUserId(userId);
 
-    List<UserLevelResponse> resultList = topResult.stream()
+    List<UserLevelResponse> resultList = topResult.parallelStream()
         .map(UserLevelResponse::to)
         .collect(Collectors.toList());
 
@@ -45,7 +45,7 @@ public class UserLevelController {
   ) {
     List<UserLevel> topUser = userLevelService.getTop20UserByResult(levelId);
 
-    List<UserLevelResponse> resultList = topUser.stream()
+    List<UserLevelResponse> resultList = topUser.parallelStream()
         .map(UserLevelResponse::to)
         .collect(Collectors.toList());
 

@@ -27,21 +27,21 @@ public class UserLevelRepositoryImpl implements UserLevelRepository {
 
   @Override
   public List<UserLevel> findAllByUserId(int userId) {
-    return repository.stream()
+    return repository.parallelStream()
         .filter(user -> user.getUserId() == userId)
         .collect(Collectors.toList());
   }
 
   @Override
   public List<UserLevel> findAllByLevelId(int levelId) {
-    return repository.stream()
+    return repository.parallelStream()
         .filter(user -> user.getLevelId() == levelId)
         .collect(Collectors.toList());
   }
 
   @Override
   public Optional<UserLevel> findByUserIdAndLevelId(int userId, int levelId) {
-    return repository.stream()
+    return repository.parallelStream()
         .filter(
             u -> u.getUserId() == userId && u.getLevelId() == levelId
         )
