@@ -1,14 +1,18 @@
 package com.example.user_result.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserCreateRequest {
+public class UserLevelCreateRequest {
 
-  private int user_id;
-  private int level_id;
+  @JsonProperty(value = "user_id")
+  private int userId;
+
+  @JsonProperty(value = "level_id")
+  private int levelId;
   private int result;
 
 }
